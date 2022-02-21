@@ -1421,3 +1421,19 @@
     data:
       event: Turn_On_CH_Yeelight
   mode: single
+- id: '1643231901043248u'
+  alias: '[Project][Consumption][Toggle]'
+  description: ''
+  mode: single
+  trigger:
+    - platform: time_pattern
+      minutes: /2
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.projector_power_3
+      below: '40'
+  action:
+    - type: turn_off
+      device_id: 96b9c06a68108f32fc662dbe1f89fff0
+      entity_id: switch.projector
+      domain: switch
