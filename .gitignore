@@ -8,6 +8,7 @@
 !automation/
 !automation/*
 !automation/*/*
+!automation/*/*/*
 !automations.yaml
 !dwains-dashboard/
 !dwains-dashboard/*
