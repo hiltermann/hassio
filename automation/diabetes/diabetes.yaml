@@ -1,0 +1,117 @@
+- id: '1600095405673'
+  alias: Create Low Glucose Notification
+  description: 'Low Dexcom Notification '
+  trigger:
+  - below: '4.3'
+    entity_id: sensor.dexcom_thiltermann_glucose_value
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: THOMAS GLUCOSE LEVEL BELOW 4.3
+      notification_id: low_glucose
+    service: dwains_dashboard.notification_create
+  mode: single
+- id: '1600095640314'
+  alias: Create High Glucose Notification
+  description: High Dexcom Notification
+  trigger:
+  - above: '11.0'
+    entity_id: sensor.dexcom_thiltermann_glucose_value
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: 'HIGH: Thomas BG above 11.0'
+      notification_id: high_glucose
+    service: dwains_dashboard.notification_create
+  mode: single
+- id: '1600095803556'
+  alias: Dismiss Low Glucose Notification
+  description: 'Low Dexcom Notification '
+  trigger:
+  - above: '4.3'
+    entity_id: sensor.dexcom_thiltermann_glucose_value
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      notification_id: low_glucose
+    service: dwains_dashboard.notification_dismiss
+  mode: single
+- id: '1600095954187'
+  alias: Dismiss High Glucose Notification
+  description: High Dexcom Notification
+  trigger:
+  - below: '11.0'
+    entity_id: sensor.dexcom_thiltermann_glucose_value
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      notification_id: high_glucose
+    service: dwains_dashboard.notification_dismiss
+  mode: single
+- id: '1600376215811'
+  alias: Create No DATA Glucose Notification
+  description: Stale Dexcom value notification
+  trigger:
+  - platform: template
+    value_template: '{{(states.sensor.time.last_changed - states.sensor.dexcom_thiltermann_glucose_value.last_changed).total_seconds()
+      > 600}}'
+  condition: []
+  action:
+  - data:
+      message: 'NO DATA: Thomas last value older than 10mins'
+      notification_id: old_glucose
+    service: dwains_dashboard.notification_create
+  mode: single
+- id: '1600379655702'
+  alias: Dismiss No DATA Glucose Notification
+  description: Stale Dexcom value notification
+  trigger:
+  - platform: template
+    value_template: '{{(states.sensor.time.last_changed - states.sensor.dexcom_thiltermann_glucose_value.last_changed).total_seconds()
+      < 120}}'
+  condition: []
+  action:
+  - data:
+      notification_id: old_glucose
+    service: dwains_dashboard.notification_dismiss
+  mode: single
+- id: '1643978332837'
+  alias: '[Notification][LaMetric][Dexcom] Display value every minute'
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: /30
+  condition:
+  - condition: and
+    conditions:
+    - condition: time
+      after: '20:00:00'
+      before: 07:00:00
+  action:
+  - service: notify.lametric_clock
+    data:
+      data:
+        icon: '{{states.sensor.dexcom_trend_icon.state}}'
+        cycles: 3
+        priority: critical
+        icon_type: none
+      message: '{{states.sensor.dexcom_thiltermann_glucose_value.state}} mm'
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: notify.lametric_clock
+    data:
+      data:
+        icon: i2296
+        cycles: 2
+        priority: critical
+        icon_type: none
+      message: '{{((as_timestamp(now()) - as_timestamp(states.sensor.dexcom_thiltermann_glucose_value.last_changed))
+        / 60) | int}} min'
+  mode: single

@@ -1,0 +1,209 @@
+- id: '1624647542106'
+  alias: Away - Bedtime Routine Kids
+  description: ''
+  trigger:
+  - platform: time
+    at: '18:30:00'
+  condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: Away
+  action:
+  - delay: 00:{{ (range(25, 59)|random) }}:{{ (range(10, 20)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id: light.entrance
+  - delay: 00:00:{{ (range(5, 25)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id: light.landing
+  - delay: 00:00:{{ (range(3, 12)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.bedroom_thomas
+      - light.mathieu_light
+  - delay: 00:00:{{ (range(11, 25)|random) }}
+  - service: cover.close_cover
+    target:
+      entity_id: cover.thomas
+  - delay: 00:00:{{ (range(34, 59)|random) }}
+  - service: cover.close_cover
+    target:
+      entity_id: cover.mathieu
+  - delay: 00:{{ (range(0, 59)|random) }}:{{ (range(0, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.bedroom_thomas
+      - light.mathieu_light
+  - delay: 00:00:{{ (range(14, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id: light.landing
+  - delay: 00:00:{{ (range(5, 22)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id: light.entrance
+  - delay: 00:{{ (range(5, 22)|random) }}:{{ (range(5, 22)|random) }}
+  mode: single
+- id: '1625166164473'
+  alias: Away - Bedtime Routine Parents
+  description: ''
+  trigger:
+  - platform: time
+    at: '21:50:00'
+  condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: Away
+  action:
+  - delay: 00:{{ (range(25, 59)|random) }}:{{ (range(10, 20)|random) }}
+  - service: cover.close_cover
+    target:
+      entity_id: cover.back
+  - delay: 00:{{ (range(1, 2)|random) }}:{{ (range(11, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.dining_table
+      - light.seating_area
+      - light.kitchen
+      - light.green_wall_spots
+  - service: homeassistant.turn_off
+    target:
+      entity_id:
+      - switch.copper
+      - switch.christmas_tree
+  - delay: 00:00:{{ (range(3, 12)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id: light.entrance
+  - delay: 00:00:{{ (range(8, 22)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id: light.landing
+  - delay: 00:00:{{ (range(9, 59)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.laundry_light
+      - light.closet
+      - light.master_bedroom
+  - delay: 00:{{ (range(25, 59)|random) }}:{{ (range(10, 20)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.bathroom
+      - light.closet
+      - light.master_bedroom
+      - light.landing
+      - light.entrance
+      - light.laundry_light
+  mode: single
+- id: '1626205516048'
+  alias: Away - Morning Routine
+  description: ''
+  trigger:
+  - platform: time
+    at: 06:30:00
+  condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: Away
+  action:
+  - delay: 00:{{ (range(11, 59)|random) }}:{{ (range(10, 20)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.master_bedroom
+      - light.closet
+      - light.laundry_light
+      - light.bathroom
+  - delay: 00:{{ (range(0, 5)|random) }}:{{ (range(1,59)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.landing
+      - light.mathieu_light
+      - light.bedroom_thomas
+  - delay: 00:{{ (range(1, 7)|random) }}:{{ (range(1, 59)|random) }}
+  - service: cover.open_cover
+    target:
+      entity_id:
+      - cover.mathieu
+      - cover.thomas
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.landing
+      - light.mathieu_light
+      - light.bedroom_thomas
+  - delay: 00:00:{{ (range(13, 59)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.entrance
+      - light.kitchen
+      - light.dining_table
+      - light.seating_area
+      - light.green_wall_spots
+  - service: switch.turn_on
+    target:
+      entity_id: switch.christmas_tree
+  - delay: 00:{{ (range(22, 47)|random) }}:{{ (range(1, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.master_bedroom
+      - light.closet
+      - light.laundry_light
+      - light.bathroom
+      - light.entrance
+  - delay: 01:{{ (range(0, 34)|random) }}:{{ (range(13, 37)|random) }}
+  - service: cover.open_cover
+    target:
+      entity_id:
+      - cover.tv
+      - cover.front
+  - delay: 00:{{ (range(1, 33)|random) }}:{{ (range(1, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.kitchen
+      - light.dining_table
+      - light.seating_area
+  - delay: 01:{{ (range(1, 33)|random) }}:{{ (range(1, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id: light.green_wall_spots
+  mode: single
+- id: '1626208115002'
+  alias: Away - Turn lights on
+  description: ''
+  trigger:
+  - platform: time
+    at: '15:27:00'
+  condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: Away
+  action:
+  - delay: 00:{{ (range(0, 59)|random) }}:{{ (range(0, 59)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.dining_table
+      - light.seating_area
+      - light.kitchen
+      - light.green_wall_spots
+  - service: homeassistant.turn_on
+    target:
+      entity_id:
+      - switch.christmas_tree
+  - delay: 00:{{ (range(0, 59)|random) }}:{{ (range(0, 59)|random) }}
+  - service: homeassistant.turn_on
+    target:
+      entity_id:
+      - switch.copper
+  mode: single

@@ -1,0 +1,148 @@
+- id: '1635588061246'
+  alias: Toggle Mathieu Curtain
+  description: ''
+  trigger:
+  - platform: device
+    device_id: dc269a8067c57f91587f78ed2be9e8b5
+    domain: homekit_controller
+    type: button1
+    subtype: single_press
+  action:
+  - service: cover.toggle
+    target:
+      entity_id: cover.mathieu
+  mode: single
+- id: '1635760235103'
+  alias: Toggle Thomas Curtain
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 1c3b0a2c7e367204a394db8bacbe95ab
+    domain: homekit_controller
+    type: button1
+    subtype: single_press
+  action:
+  - service: cover.toggle
+    target:
+      entity_id: cover.thomas
+  mode: single
+- id: '1633086983473'
+  alias: Toggle TV Curtain
+  description: ''
+  trigger:
+  - platform: device
+    device_id: e5f1abe0768d87b3f23d3b4bba79ab9b
+    domain: homekit_controller
+    type: button1
+    subtype: single_press
+  action:
+  - service: cover.toggle
+    target:
+      entity_id: cover.tv
+  mode: single
+- id: '1633088041578'
+  alias: Toggle Garden Curtain
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 1b210f28af62123c7978375744ad9612
+    domain: homekit_controller
+    type: button1
+    subtype: single_press
+  condition: []
+  action:
+  - service: cover.toggle
+    target:
+      entity_id: cover.back
+  mode: single
+- id: '1633088339080'
+  alias: Toggle Front Curtain
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 3274cbd9021c879d3388afe3dc10decc
+    domain: homekit_controller
+    type: button1
+    subtype: single_press
+  condition: []
+  action:
+  - service: cover.toggle
+    target:
+      entity_id: cover.front
+  mode: single
+- id: '1633160261718'
+  alias: Toggle Living Room Curtains (double click)
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 1b210f28af62123c7978375744ad9612
+    domain: homekit_controller
+    type: button1
+    subtype: double_press
+  - platform: device
+    device_id: 3274cbd9021c879d3388afe3dc10decc
+    domain: homekit_controller
+    type: button1
+    subtype: double_press
+  - platform: device
+    device_id: e5f1abe0768d87b3f23d3b4bba79ab9b
+    domain: homekit_controller
+    type: button1
+    subtype: double_press
+  condition: []
+  action:
+  - service: cover.toggle
+    target:
+      entity_id: group.living_room_curtains
+  mode: single
+- id: '1633160453124'
+  alias: Close 50% Front Curtain (long press)
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 3274cbd9021c879d3388afe3dc10decc
+    domain: homekit_controller
+    type: button1
+    subtype: long_press
+  condition: []
+  action:
+  - service: cover.set_cover_position
+    data:
+      position: 50
+    target:
+      entity_id: cover.front
+  mode: single
+- id: '1633160485352'
+  alias: Close 50% TV Curtain (long press)
+  description: ''
+  trigger:
+  - platform: device
+    device_id: e5f1abe0768d87b3f23d3b4bba79ab9b
+    domain: homekit_controller
+    type: button1
+    subtype: long_press
+  condition: []
+  action:
+  - service: cover.set_cover_position
+    data:
+      position: 50
+    target:
+      entity_id: cover.tv
+  mode: single
+- id: '1633160553741'
+  alias: Close 50% Garden Curtain (long press)
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 1b210f28af62123c7978375744ad9612
+    domain: homekit_controller
+    type: button1
+    subtype: long_press
+  condition: []
+  action:
+  - service: cover.set_cover_position
+    data:
+      position: 50
+    target:
+      entity_id: cover.back
+  mode: single

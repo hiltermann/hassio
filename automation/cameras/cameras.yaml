@@ -1,0 +1,216 @@
+- id: '15786rew04134794'
+  alias: App Record FrontYard on Movement
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.frontyard_line_crossing
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: timer.frontyard_trigger
+    state: idle
+  action:
+  - service: notify.mobile_app_pixel_4
+    data:
+      message: Frontyard motion!
+      data:
+        sticky: true
+        image: /api/camera_proxy/camera.front_yard
+        channel: Motion
+        actions:
+        - action: URI
+          title: Open Camera Feed
+          uri: /dwains-dashboard/cameras
+        - action: MUTE_NOTIFCATIONS_FRONT_YARD
+          title: Mute Notifications
+  - data:
+      duration: 55
+      filename: /config/www/tmp/frontyard_{{ now().strftime("%Y%m%d-%H%M") }}.mp4
+    entity_id: camera.front_yard
+    service: camera.record
+  - data: {}
+    entity_id: timer.frontyard_trigger
+    service: timer.start
+  mode: single
+- id: '157860421nff3344'
+  alias: App Record BackYard on Movement
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.backyard_field_detection
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: timer.backyard_trigger
+    state: idle
+  action:
+  - service: notify.mobile_app_pixel_4
+    data:
+      message: Backyard motion!
+      data:
+        sticky: true
+        image: /api/camera_proxy/camera.back_yard
+        channel: Motion
+        actions:
+        - action: URI
+          title: Open Camera Feed
+          uri: /dwains-dashboard/cameras
+        - action: MUTE_NOTIFCATIONS_BACK_YARD
+          title: Mute Notifications
+  - data:
+      duration: 55
+      filename: /config/www/tmp/backyard_{{ now().strftime("%Y%m%d-%H%M") }}.mp4
+    entity_id: camera.back_yard
+    service: camera.record
+  - data: {}
+    entity_id: timer.backyard_trigger
+    service: timer.start
+  mode: single
+- id: '1610sge641720671'
+  alias: 'App Record Driveway on Movement '
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.driveway_line_crossing
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: timer.driveway_trigger
+    state: idle
+  action:
+  - service: notify.mobile_app_pixel_4
+    data:
+      message: Driveway motion!
+      data:
+        sticky: true
+        image: /api/camera_proxy/camera.driveway
+        channel: Motion
+        actions:
+        - action: URI
+          title: Open Camera Feed
+          uri: /dwains-dashboard/cameras
+        - action: MUTE_NOTIFCATIONS_DRIVEWAY
+          title: Mute Notifications
+  - data:
+      duration: 55
+      filename: /config/www/tmp/driveway_{{ now().strftime("%Y%m%d-%H%M") }}.mp4
+    entity_id: camera.driveway
+    service: camera.record
+  - data: {}
+    entity_id: timer.driveway_trigger
+    service: timer.start
+  mode: single
+- id: '161042359152efew38830'
+  alias: 'App mute notications Backyard'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: MUTE_NOTIFCATIONS_BACK_YARD
+  condition: []
+  action:
+  - service: automation.turn_off
+    data: {}
+    entity_id: automation.app_record_backyard_on_movement
+  - service: notify.mobile_app_pixel_4
+    data:
+      title: Backyard muted
+      message: Movement notification muted for 30 mins
+  mode: single
+- id: '161ewhy09152422388301'
+  alias: 'App mute notications Frontyard'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: MUTE_NOTIFCATIONS_FRONT_YARD
+  condition: []
+  action:
+  - service: automation.turn_off
+    data: {}
+    entity_id: automation.app_record_frontyard_on_movement
+  - service: notify.mobile_app_pixel_4
+    data:
+      title: Frontyard muted
+      message: Movement notification muted for 30 mins
+  mode: single
+- id: '161095341523njre88302'
+  alias: 'App mute notications Driveway'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: MUTE_NOTIFCATIONS_DRIVEWAY
+  condition: []
+  action:
+  - service: automation.turn_off
+    data: {}
+    entity_id: automation.app_record_driveway_on_movement
+  - service: notify.mobile_app_pixel_4
+    data:
+      title: Driveway muted
+      message: Movement notification muted for 30 mins
+  mode: single
+- id: '16109157ww30398'
+  alias: App unmute notifications Backyard
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: automation.app_record_backyard_on_movement
+    from: 'on'
+    to: 'off'
+    for: 00:30:00
+  condition: []
+  action:
+  - service: automation.turn_on
+    data: {}
+    entity_id: automation.app_record_backyard_on_movement
+  - service: notify.mobile_app_pixel_4
+    data:
+      title: Backyard unmuted
+      message: Backyard movement notifications reactivated
+  mode: single
+- id: '161091njk57303981'
+  alias: App unmute notifications Frontyard
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: automation.app_record_frontyard_on_movement
+    from: 'on'
+    to: 'off'
+    for: 00:30:00
+  condition: []
+  action:
+  - service: automation.turn_on
+    data: {}
+    entity_id: automation.app_record_frontyard_on_movement
+  - service: notify.mobile_app_pixel_4
+    data:
+      title: Frontyard unmuted
+      message: Frontyard movement notifications reactivated
+  mode: single
+- id: '16109g2157303982'
+  alias: App unmute notifications Driveway
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: automation.app_record_driveway_on_movement
+    from: 'on'
+    to: 'off'
+    for: 00:30:00
+  condition: []
+  action:
+  - service: automation.turn_on
+    data: {}
+    entity_id: automation.app_record_driveway_on_movement
+  - service: notify.mobile_app_pixel_4
+    data:
+      title: Driveway unmuted
+      message: Driveway movement notifications reactivated
+  mode: single

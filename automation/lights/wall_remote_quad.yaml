@@ -1,0 +1,144 @@
+- id: '1579208011047'
+  alias: Switch off Kitchen Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.kitchen
+    state: 'on'
+  action:
+  - entity_id: group.kitchen
+    service: homeassistant.turn_off
+  mode: single
+- id: '1579208011048'
+  alias: Switch on Kitchen Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.kitchen
+    state: 'off'
+  action:
+  - entity_id: group.kitchen
+    service: homeassistant.turn_on
+  mode: single
+- id: 1579208011047dine
+  alias: Switch off Dining Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.dining_table
+    state: 'on'
+  action:
+  - entity_id: group.dining_table
+    service: homeassistant.turn_off
+  mode: single
+- id: 1579208011048dine
+  alias: Switch on Dining Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.dining_table
+    state: 'off'
+  action:
+  - entity_id: group.dining_table
+    service: homeassistant.turn_on
+  mode: single
+- id: 1579208011047seat
+  alias: Switch off Seating Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.seating_area
+    state: 'on'
+  action:
+  - entity_id: group.seating_area
+    service: homeassistant.turn_off
+  mode: single
+- id: 1579208011048seat
+  alias: Switch on Seating Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.seating_area
+    state: 'off'
+  action:
+  - entity_id: group.seating_area
+    service: homeassistant.turn_on
+  mode: single
+- id: 1579208011047out
+  alias: Switch off Outdoor Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.back_garden
+    state: 'on'
+  action:
+  - entity_id: group.back_garden
+    service: homeassistant.turn_off
+  mode: single
+- id: 1579208011048out
+  alias: Switch on Outdoor Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.back_garden
+    state: 'off'
+  action:
+  - entity_id: group.back_garden
+    service: homeassistant.turn_on
+  mode: single
