@@ -1,0 +1,1423 @@
+- id: '2345'
+  alias: Mark house as home
+  trigger:
+  - entity_id: input_boolean.extended_away
+    from: 'on'
+    platform: state
+    to: 'off'
+  action:
+  - data:
+      option: Home
+    entity_id: input_select.house_mode
+    service: input_select.select_option
+- id: '1579208011047'
+  alias: Switch off Kitchen Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.kitchen
+    state: 'on'
+  action:
+  - entity_id: group.kitchen
+    service: homeassistant.turn_off
+  mode: single
+- id: '1579208011048'
+  alias: Switch on Kitchen Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 1
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.kitchen
+    state: 'off'
+  action:
+  - entity_id: group.kitchen
+    service: homeassistant.turn_on
+  mode: single
+- id: 1579208011047dine
+  alias: Switch off Dining Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.dining_table
+    state: 'on'
+  action:
+  - entity_id: group.dining_table
+    service: homeassistant.turn_off
+  mode: single
+- id: 1579208011048dine
+  alias: Switch on Dining Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 2
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.dining_table
+    state: 'off'
+  action:
+  - entity_id: group.dining_table
+    service: homeassistant.turn_on
+  mode: single
+- id: 1579208011047seat
+  alias: Switch off Seating Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.seating_area
+    state: 'on'
+  action:
+  - entity_id: group.seating_area
+    service: homeassistant.turn_off
+  mode: single
+- id: 1579208011048seat
+  alias: Switch on Seating Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 3
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.seating_area
+    state: 'off'
+  action:
+  - entity_id: group.seating_area
+    service: homeassistant.turn_on
+  mode: single
+- id: 1579208011047out
+  alias: Switch off Outdoor Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.back_garden
+    state: 'on'
+  action:
+  - entity_id: group.back_garden
+    service: homeassistant.turn_off
+  mode: single
+- id: 1579208011048out
+  alias: Switch on Outdoor Lights [Quad]
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: zwave.switch_living_room
+      scene_data: 0
+      scene_id: 4
+    event_type: zwave.scene_activated
+    platform: event
+  condition:
+  - condition: state
+    entity_id: group.back_garden
+    state: 'off'
+  action:
+  - entity_id: group.back_garden
+    service: homeassistant.turn_on
+  mode: single
+- id: '1579358381537'
+  alias: Turn on Backgarden Lights on Movement or sunset
+  description: Movement from Backyard cameras will turn on backgarden lights for 3
+    minutes.
+  trigger:
+  - entity_id: binary_sensor.backyard_field_detection
+    from: 'off'
+    platform: state
+    to: 'on'
+  - platform: sun
+    event: sunset
+    offset: +00:14:23
+  - platform: sun
+    event: sunrise
+    offset: -00:48:00
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - service: homeassistant.turn_on
+    data: {}
+    entity_id: group.back_garden
+  mode: single
+- id: '1579358568045'
+  alias: Turn off Backgarden Lights, 3 mins after last movement
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.backyard_field_detection
+    from: 'on'
+    to: 'off'
+    for: 00:03:00
+  - platform: time
+    at: '23:32:00'
+  - platform: sun
+    event: sunrise
+    offset: 00:15:00
+  condition:
+  - condition: or
+    conditions:
+    - condition: time
+      after: '23:31:00'
+    - condition: sun
+      before: sunrise
+      before_offset: 01:00:00
+  action:
+  - entity_id: group.back_garden
+    service: homeassistant.turn_off
+  mode: restart
+- id: '1580675524540'
+  alias: '[Motion][On][Entrance] Toilet'
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.entrance_toilet
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 4461b811cbdebefe874fb6cc0e95e3d2
+    entity_id: light.toilet
+    domain: light
+    brightness_pct: 50
+  mode: single
+- id: '1580676799880'
+  alias: '[Motion][Off][Entrance] Toilet'
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.entrance_toilet
+    for: 00:05:00
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - entity_id: light.toilet
+    service: homeassistant.turn_off
+  mode: restart
+- id: '1580848640677'
+  alias: Sequence alarm set to Armed Night
+  description: ''
+  trigger:
+  - entity_id: alarm_control_panel.main_alarm
+    platform: state
+    to: armed_night
+  action:
+  - entity_id:
+    - group.dining_table
+    - group.seating_area
+    - group.kitchen
+    service: homeassistant.turn_off
+  mode: single
+- id: '1600095405673'
+  alias: Create Low Glucose Notification
+  description: 'Low Dexcom Notification '
+  trigger:
+  - below: '4.3'
+    entity_id: sensor.dexcom_value
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: THOMAS GLUCOSE LEVEL BELOW 4.3
+      notification_id: low_glucose
+    service: dwains_dashboard.notification_create
+  mode: single
+- id: '1600095640314'
+  alias: Create High Glucose Notification
+  description: High Dexcom Notification
+  trigger:
+  - above: '11.0'
+    entity_id: sensor.dexcom_value
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: 'HIGH: Thomas BG above 11.0'
+      notification_id: high_glucose
+    service: dwains_dashboard.notification_create
+  mode: single
+- id: '1600095803556'
+  alias: Dismiss Low Glucose Notification
+  description: 'Low Dexcom Notification '
+  trigger:
+  - above: '4.3'
+    entity_id: sensor.dexcom_value
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      notification_id: low_glucose
+    service: dwains_dashboard.notification_dismiss
+  mode: single
+- id: '1600095954187'
+  alias: Dismiss High Glucose Notification
+  description: High Dexcom Notification
+  trigger:
+  - below: '11.0'
+    entity_id: sensor.dexcom_value
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      notification_id: high_glucose
+    service: dwains_dashboard.notification_dismiss
+  mode: single
+- id: '1600376215811'
+  alias: Create No DATA Glucose Notification
+  description: Stale Dexcom value notification
+  trigger:
+  - platform: template
+    value_template: '{{(states.sensor.time.last_changed - states.sensor.dexcom_value.last_updated).total_seconds()
+      > 600}}'
+  condition: []
+  action:
+  - data:
+      message: 'NO DATA: Thomas last value older than 10mins'
+      notification_id: old_glucose
+    service: dwains_dashboard.notification_create
+  mode: single
+- id: '1600379655702'
+  alias: Dismiss No DATA Glucose Notification
+  description: Stale Dexcom value notification
+  trigger:
+  - platform: template
+    value_template: '{{(states.sensor.time.last_changed - states.sensor.dexcom_value.last_updated).total_seconds()
+      < 120}}'
+  condition: []
+  action:
+  - data:
+      notification_id: old_glucose
+    service: dwains_dashboard.notification_dismiss
+  mode: single
+- id: '1600464963368'
+  alias: Create Garbage Tomorrow Notification
+  description: ''
+  trigger:
+  - platform: time
+    at: '18:00'
+  condition:
+  - condition: template
+    value_template: '{{states.sensor.afvalwijzer_tomorrow.state != ''None''}}'
+  action:
+  - data:
+      message: 'GARBAGE: Tomorrow {{states.sensor.afvalwijzer_tomorrow.state}} will
+        be collected.'
+      notification_id: garbage_tomorrow
+    service: dwains_dashboard.notification_create
+  - service: notify.mobile_app_wall_tablet
+    data:
+      title: Garbage Notification
+      message: Tomorrow {{states.sensor.afvalwijzer_tomorrow.state}} will be collected.
+      data: 'channel: Garbage'
+  mode: single
+- id: '1600465879422'
+  alias: Dismiss Garbage Notifications
+  description: Tomorrow and Today
+  trigger:
+  - at: '23:59'
+    platform: time
+  condition: []
+  action:
+  - data:
+      notification_id: garbage_tomorrow
+    service: dwains_dashboard.notification_dismiss
+  - data:
+      notification_id: garbage_today
+    service: dwains_dashboard.notification_dismiss
+  mode: single
+- id: '1600466052596'
+  alias: Create Garbage Today Notification
+  description: ''
+  trigger:
+  - platform: time_pattern
+    hours: '7'
+    minutes: /2
+  condition:
+  - condition: template
+    value_template: '{{states.sensor.afvalwijzer_today.state != ''None''}}'
+  action:
+  - data:
+      message: 'GARBAGE: Today {{states.sensor.afvalwijzer_today.state}} will be collected.'
+      notification_id: garbage_today
+    service: dwains_dashboard.notification_create
+  - service: notify.lametric_clock
+    data:
+      message: Today {{states.sensor.afvalwijzer_today.state}} will be collected.
+      data:
+        icon: i9399
+  - service: notify.mobile_app_wall_tablet
+    data:
+      title: Garbage Notification
+      message: Today {{states.sensor.afvalwijzer_tomorrow.state}} will be collected.
+      data: 'channel: Garbage'
+  mode: single
+- id: '1601975618020'
+  alias: Purge Security Camera Recording >7days
+  description: ''
+  trigger:
+  - platform: time
+    at: 06:00:00
+  condition:
+    condition: time
+    weekday:
+    - sun
+  action:
+  - service: switch.toggle
+    data: {}
+    entity_id: switch.purge_recordings
+  mode: single
+- id: '1609792598172'
+  alias: '[Motion][On][Entrance] Front door'
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.entrance_hall
+    platform: state
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.entrance_door
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.front_door
+    to: open
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.entrance_door
+    below: '20'
+  action:
+  - service: light.turn_on
+    data:
+      brightness_pct: 70
+    target:
+      entity_id: light.entrance
+  mode: single
+- id: '1609792714671'
+  alias: '[Motion][Off][Entrance] Front door'
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.entrance_hall
+    for: 00:01:00
+    platform: state
+    to: 'off'
+  - platform: state
+    entity_id: binary_sensor.entrance_door
+    to: 'off'
+    for: 00:01:00
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    data: {}
+    entity_id: group.entrance
+  mode: restart
+- id: '1609875819920'
+  alias: '[Motion][On][Hallway] 1st Landing'
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.first_floor
+    platform: state
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.first_floor
+    below: '12'
+  action:
+  - service: light.turn_on
+    data:
+      brightness_pct: 5
+    target:
+      entity_id: light.landing
+  mode: single
+- id: '1609875943511'
+  alias: '[Motion][Off][Hallway] 1st Landing'
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.first_floor
+    for: 00:01:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    data: {}
+    entity_id: light.landing
+  mode: restart
+- id: '1609743243598172'
+  alias: '[Motion][On][Laundry] Laundry (day)'
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.second_floor_motion
+    platform: state
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.second_floor_motion
+    below: '9'
+  - condition: time
+    after: 07:30:00
+    before: '21:00:00'
+  action:
+  - service: light.turn_on
+    data:
+      brightness_pct: 60
+    target:
+      entity_id: light.laundry_light
+  mode: single
+- id: '6543648908590'
+  alias: '[Motion][Off][Laundry] Laundry Lights'
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.second_floor_motion
+    for: 00:01:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    entity_id: light.laundry_light
+  mode: restart
+- id: '1610399201353'
+  alias: Turn on Office lights on motion
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.office_motion
+    platform: state
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.office_motion
+    below: '70'
+  action:
+  - service: homeassistant.turn_on
+    data: {}
+    target:
+      entity_id:
+      - switch.office_light
+      - switch.office_spots
+  mode: single
+- id: '1610399275993'
+  alias: Turn off Office lights on motion
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.office_motion
+    for:
+      hours: 0
+      minutes: 45
+      seconds: 0
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    data: {}
+    target:
+      entity_id:
+      - switch.office_light
+      - switch.office_spots
+  mode: restart
+- id: '1611412296966'
+  alias: '[Motion][On][Laundry] Laundry (night)'
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.second_floor_motion
+    platform: state
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.second_floor_motion
+    below: '12'
+  - condition: time
+    after: '21:00:00'
+    before: 07:30:00
+  action:
+  - service: light.turn_on
+    data:
+      brightness_pct: 1
+    entity_id: light.laundry_light
+  mode: single
+- id: '1611523505428'
+  alias: Turn on Front Garden lights on sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: +00:13:55
+  - platform: state
+    entity_id: binary_sensor.frontyard_line_crossing
+    to: 'on'
+  - platform: sun
+    event: sunrise
+    offset: -00:45:00
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - service: homeassistant.turn_on
+    data: {}
+    entity_id: group.front_garden
+  mode: single
+- id: '1611523970639'
+  alias: Turn off Front Garden lights
+  description: ''
+  trigger:
+  - platform: time
+    at: '23:30:00'
+  - platform: state
+    entity_id: binary_sensor.frontyard_line_crossing
+    to: 'off'
+    for: 00:03:00
+  - platform: sun
+    event: sunrise
+    offset: +00:08:00
+  condition:
+  - condition: or
+    conditions:
+    - condition: time
+      after: '23:29:00'
+    - condition: sun
+      before: sunrise
+      before_offset: 01:00:00
+  action:
+  - service: homeassistant.turn_off
+    data: {}
+    entity_id: group.front_garden
+  mode: single
+- id: '1612206651983'
+  alias: '[Motion][On][Kitchen] Kitchen lights'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_motion
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.garden_door
+    to: open
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.kitchen
+    below: '20'
+  action:
+  - service: light.turn_on
+    data:
+      brightness_pct: 60
+    target:
+      entity_id: light.kitchen
+  mode: single
+- id: '1612206974500'
+  alias: Turn off Living Room / Kitchen Lights
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen_motion
+    from: 'on'
+    to: 'off'
+    for: 00:22:00
+  - platform: numeric_state
+    entity_id: sensor.kitchen_lightlevel
+    above: '45'
+  condition:
+  - condition: state
+    entity_id: group.kitchen
+    state: 'on'
+  - type: is_no_motion
+    condition: device
+    device_id: 1409663d2fdc188a60ff32223d6698f9
+    entity_id: binary_sensor.kitchen_motion
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+  - type: is_off
+    condition: device
+    device_id: c7a039dab88bdff40450a55cbf5d783d
+    entity_id: binary_sensor.living_room_motion
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+  - condition: or
+    conditions:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: sun.sun
+        state: above_horizon
+      - condition: numeric_state
+        entity_id: sensor.kitchen_lightlevel
+        above: '50'
+      - type: is_no_motion
+        condition: device
+        device_id: 1409663d2fdc188a60ff32223d6698f9
+        entity_id: binary_sensor.kitchen_motion
+        domain: binary_sensor
+        for:
+          hours: 0
+          minutes: 5
+          seconds: 0
+      - type: is_off
+        condition: device
+        device_id: c7a039dab88bdff40450a55cbf5d783d
+        entity_id: binary_sensor.living_room_motion
+        domain: binary_sensor
+        for:
+          hours: 0
+          minutes: 5
+          seconds: 0
+    - condition: and
+      conditions:
+      - type: is_off
+        condition: device
+        device_id: c7a039dab88bdff40450a55cbf5d783d
+        entity_id: binary_sensor.living_room_motion
+        domain: binary_sensor
+        for:
+          hours: 0
+          minutes: 20
+          seconds: 0
+      - type: is_no_motion
+        condition: device
+        device_id: 1409663d2fdc188a60ff32223d6698f9
+        entity_id: binary_sensor.kitchen_motion
+        domain: binary_sensor
+        for:
+          hours: 0
+          minutes: 20
+          seconds: 0
+  action:
+  - service: homeassistant.turn_off
+    data: {}
+    target:
+      entity_id: group.kitchen
+  mode: single
+- id: '1612213535688'
+  alias: Turn off Wall Tablet Charger
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:15:00'
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.tablet_charger
+  mode: single
+- id: '1612213579574'
+  alias: Turn on Wall Tablet Charger
+  description: ''
+  trigger:
+  - platform: time
+    at: 07:00:00
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.tablet_charger
+  mode: single
+- id: '1612293254778'
+  alias: Notify Washing Machine Ready
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.washing_machine_state
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: notify.mobile_app_pixel_4
+    data:
+      title: Washing Machine Ready
+      message: Laundry is ready to be taken out of the machine! Get cracking :)
+      data:
+        channel: Laundry
+  - service: notify.mobile_app_wall_tablet
+    data:
+      title: Washing Machine Ready
+      message: Laundry is ready to be taken out of the machine! Get cracking :)
+      data:
+        channel: Laundry
+  mode: single
+- id: '1613771022701'
+  alias: Living Room - Heating - Close Valve
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.living_room_temperature_2
+    above: '21'
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 2
+      seconds: 0
+      milliseconds: 0
+  - service: homeassistant.turn_off
+    data: {}
+    entity_id: switch.zone_valve
+  mode: single
+- id: '1613771300098'
+  alias: Living Room - Heating - Open Valve
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.living_room_temperature_2
+    below: '20'
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 2
+      seconds: 0
+      milliseconds: 0
+  - service: homeassistant.turn_on
+    data: {}
+    entity_id: switch.zone_valve
+  mode: single
+- id: '1618775696690'
+  alias: Turn on Desk Spots with Chandeliers
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 5067064bd63d954daee0bde8f4039a78
+    entity_id: light.chandeliers
+    domain: light
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 597ab1b60170038e40bc1373e670b26e
+    entity_id: switch.desk_spots_switch_3
+    domain: switch
+  - type: turn_on
+    device_id: b097cc1d38540353518b1c084665cde9
+    entity_id: switch.green_spot
+    domain: switch
+  mode: single
+- id: '1618775731238'
+  alias: Turn off Desk Spots with Chandeliers
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 5067064bd63d954daee0bde8f4039a78
+    entity_id: light.chandeliers
+    domain: light
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 597ab1b60170038e40bc1373e670b26e
+    entity_id: switch.desk_spots_switch_3
+    domain: switch
+  - type: turn_off
+    device_id: b097cc1d38540353518b1c084665cde9
+    entity_id: switch.green_spot
+    domain: switch
+  mode: single
+- id: '1621583102831'
+  alias: 'Notify Dryer Ready '
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.dryer_state
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: notify.mobile_app_pixel_4
+    data:
+      title: Tumble Dryer Ready
+      data:
+        channel: Laundry
+      message: Laundry is dry, get ready to roll :)
+  - service: notify.mobile_app_wall_tablet
+    data:
+      data:
+        channel: Laundry
+      title: Tumble Dryer Ready
+      message: Laundry is dry, get ready to roll :)
+  mode: single
+- id: '1624478422549'
+  alias: Turn on Kitchen Island Lights
+  description: ''
+  trigger: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.hob_state
+    state: 'off'
+  action:
+  - service: remote.send_command
+    data:
+      command: b64:sgCiAAfCDQwYGQwMGBkMDBkYDA0XGQwNFxkMGQwYDA0YGAwNGAwYDRgYDQACCwwMGBkMDRgYDA0YGAwNGBgMDRgYDRgNGAwNGBgMDBgNGA0YGAwAAgsMDRgYDQwYGQwNFxgNDBgYDQwYGQwYDBkMDRgYDA0YDBkMGBgMAAIMDAwYGQwMGBkMDRgYDA0YGAwNGBgMGQwYDA0YGQsNGA0XDRgYDQAF3AAAAAAAAA==
+    target:
+      device_id: 7590b683faa511ea90b7292c15bd1f93
+  mode: single
+- id: '1624478541575'
+  alias: Turn off Kitchen Island Lights
+  description: ''
+  trigger: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.hob_state
+    state: 'on'
+  action:
+  - service: remote.send_command
+    data:
+      command: b64:sgCiAAfCDQwYGQwMGBkMDBkYDA0XGQwNFxkMGQwYDA0YGAwNGAwYDRgYDQACCwwMGBkMDRgYDA0YGAwNGBgMDRgYDRgNGAwNGBgMDBgNGA0YGAwAAgsMDRgYDQwYGQwNFxgNDBgYDQwYGQwYDBkMDRgYDA0YDBkMGBgMAAIMDAwYGQwMGBkMDRgYDA0YGAwNGBgMGQwYDA0YGQsNGA0XDRgYDQAF3AAAAAAAAA==
+    target:
+      device_id: 7590b683faa511ea90b7292c15bd1f93
+  mode: single
+- id: '1624647542106'
+  alias: Away - Bedtime Routine Kids
+  description: ''
+  trigger:
+  - platform: time
+    at: '18:30:00'
+  condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: Away
+  action:
+  - delay: 00:{{ (range(25, 59)|random) }}:{{ (range(10, 20)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id: light.entrance
+  - delay: 00:00:{{ (range(5, 25)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id: light.landing
+  - delay: 00:00:{{ (range(3, 12)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.bedroom_thomas
+      - light.mathieu_light
+  - delay: 00:00:{{ (range(11, 25)|random) }}
+  - service: cover.close_cover
+    target:
+      entity_id: cover.thomas
+  - delay: 00:00:{{ (range(34, 59)|random) }}
+  - service: cover.close_cover
+    target:
+      entity_id: cover.mathieu
+  - delay: 00:{{ (range(0, 59)|random) }}:{{ (range(0, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.bedroom_thomas
+      - light.mathieu_light
+  - delay: 00:00:{{ (range(14, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id: light.landing
+  - delay: 00:00:{{ (range(5, 22)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id: light.entrance
+  - delay: 00:{{ (range(5, 22)|random) }}:{{ (range(5, 22)|random) }}
+  mode: single
+- id: '1625166164473'
+  alias: Away - Bedtime Routine Parents
+  description: ''
+  trigger:
+  - platform: time
+    at: '21:50:00'
+  condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: Away
+  action:
+  - delay: 00:{{ (range(25, 59)|random) }}:{{ (range(10, 20)|random) }}
+  - service: cover.close_cover
+    target:
+      entity_id: cover.back
+  - delay: 00:{{ (range(1, 2)|random) }}:{{ (range(11, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.dining_table
+      - light.seating_area
+      - light.kitchen
+      - light.green_wall_spots
+  - service: homeassistant.turn_off
+    target:
+      entity_id:
+      - switch.copper
+      - switch.christmas_tree
+  - delay: 00:00:{{ (range(3, 12)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id: light.entrance
+  - delay: 00:00:{{ (range(8, 22)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id: light.landing
+  - delay: 00:00:{{ (range(9, 59)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.laundry_light
+      - light.closet
+      - light.master_bedroom
+  - delay: 00:{{ (range(25, 59)|random) }}:{{ (range(10, 20)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.bathroom
+      - light.closet
+      - light.master_bedroom
+      - light.landing
+      - light.entrance
+      - light.laundry_light
+  mode: single
+- id: '1626205516048'
+  alias: Away - Morning Routine
+  description: ''
+  trigger:
+  - platform: time
+    at: 06:30:00
+  condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: Away
+  action:
+  - delay: 00:{{ (range(11, 59)|random) }}:{{ (range(10, 20)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.master_bedroom
+      - light.closet
+      - light.laundry_light
+      - light.bathroom
+  - delay: 00:{{ (range(0, 5)|random) }}:{{ (range(1,59)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.landing
+      - light.mathieu_light
+      - light.bedroom_thomas
+  - delay: 00:{{ (range(1, 7)|random) }}:{{ (range(1, 59)|random) }}
+  - service: cover.open_cover
+    target:
+      entity_id:
+      - cover.mathieu
+      - cover.thomas
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.landing
+      - light.mathieu_light
+      - light.bedroom_thomas
+  - delay: 00:00:{{ (range(13, 59)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.entrance
+      - light.kitchen
+      - light.dining_table
+      - light.seating_area
+      - light.green_wall_spots
+  - service: switch.turn_on
+    target:
+      entity_id: switch.christmas_tree
+  - delay: 00:{{ (range(22, 47)|random) }}:{{ (range(1, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.master_bedroom
+      - light.closet
+      - light.laundry_light
+      - light.bathroom
+      - light.entrance
+  - delay: 01:{{ (range(0, 34)|random) }}:{{ (range(13, 37)|random) }}
+  - service: cover.open_cover
+    target:
+      entity_id:
+      - cover.tv
+      - cover.front
+  - delay: 00:{{ (range(1, 33)|random) }}:{{ (range(1, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.kitchen
+      - light.dining_table
+      - light.seating_area
+  - delay: 01:{{ (range(1, 33)|random) }}:{{ (range(1, 59)|random) }}
+  - service: light.turn_off
+    target:
+      entity_id: light.green_wall_spots
+  mode: single
+- id: '1626208115002'
+  alias: Away - Turn lights on
+  description: ''
+  trigger:
+  - platform: time
+    at: '15:27:00'
+  condition:
+  - condition: state
+    entity_id: input_select.house_mode
+    state: Away
+  action:
+  - delay: 00:{{ (range(0, 59)|random) }}:{{ (range(0, 59)|random) }}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.dining_table
+      - light.seating_area
+      - light.kitchen
+      - light.green_wall_spots
+  - service: homeassistant.turn_on
+    target:
+      entity_id:
+      - switch.christmas_tree
+  - delay: 00:{{ (range(0, 59)|random) }}:{{ (range(0, 59)|random) }}
+  - service: homeassistant.turn_on
+    target:
+      entity_id:
+      - switch.copper
+  mode: single
+- id: '1628274345310'
+  alias: Living Room Smoke Alarm
+  description: ''
+  trigger:
+  - type: turned_on
+    platform: device
+    device_id: 4862b69a76eaee31aa33a2960ebeb12d
+    entity_id: binary_sensor.living_room_smoke_sensor_sensor
+    domain: binary_sensor
+  - platform: state
+    entity_id: sensor.living_room_smoke_sensor_smoke_2
+    to: '255'
+  condition: []
+  action:
+  - service: homeassistant.turn_on
+    target:
+      entity_id:
+      - light.seating_area
+      - light.kitchen
+      - light.dining_table
+      - light.entrance
+      - light.landing
+      - light.laundry_light
+  - service: notify.mobile_app_christoffels_iphone
+    data:
+      title: Smoke Alarm Living Room Triggered
+      message: Check it out!
+  - repeat:
+      count: '3'
+      sequence:
+      - service: tts.cloud_say
+        data:
+          entity_id: media_player.ensuite_bathroom, media_player.kitchen, media_player.office
+          message: 'RED ALERT: The living room smoke alarm has been triggered'
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 10
+          milliseconds: 0
+  mode: single
+- id: '1630436293006'
+  alias: Turn on office spots with office light
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.office_light
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: homeassistant.turn_on
+    target:
+      entity_id: switch.office_spots
+  mode: single
+- id: '1630436339051'
+  alias: Turn off office spots with office light
+  description: ''
+  trigger:
+  - platform: state
+    from: 'on'
+    to: 'off'
+    entity_id: switch.office_light
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    data: {}
+    target:
+      entity_id: switch.office_spots
+  mode: single
+- id: '1633202192614'
+  alias: '[alarm][trigger][birds] Christoffel'
+  description: ''
+  trigger:
+  - platform: template
+    value_template: "{% set t1 = as_timestamp(strptime(states('sensor.date')+' '+states('sensor.time'),'%Y-%m-%d\
+      \ %H:%M')) | int %}\n    {% set t2 = as_timestamp(strptime(states('sensor.date')+'\
+      \ '+states('sensor.bedtime_christoffel'),'%Y-%m-%d %H:%M')) | int -(60*10) %}\n\
+      \    {{t1 == t2}}"
+  condition:
+  - condition: state
+    entity_id: person.christoffel
+    state: home
+  - condition: state
+    entity_id: input_select.alarm_christoffel
+    state: 'On'
+  action:
+  - service: media_player.volume_set
+    data:
+      volume_level: 0
+    target:
+      entity_id: media_player.master_bathroom
+  - service: media_player.play_media
+    data:
+      media_content_type: music
+      media_content_id: http://192.168.1.14:8123/local/1sec.mp3
+    target:
+      entity_id: media_player.master_bathroom
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: spotcast.start
+    data:
+      entity_id: media_player.master_bathroom
+      uri: spotify:playlist:7nxyCiNtcHA9uNCPeIlaPq
+      start_volume: 20
+      repeat: track
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: media_player.volume_set
+    target:
+      entity_id: media_player.master_bathroom
+    data:
+      volume_level: 0.25
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: media_player.volume_set
+    target:
+      entity_id: media_player.master_bathroom
+    data:
+      volume_level: 0.3
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: media_player.volume_set
+    target:
+      entity_id: media_player.master_bathroom
+    data:
+      volume_level: 0.35
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: media_player.volume_set
+    target:
+      entity_id: media_player.master_bathroom
+    data:
+      volume_level: 0.4
+  mode: single
+- id: '1633971351081'
+  alias: Kids Bedtime
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: Bedtime
+  condition: []
+  action:
+  - service: cover.close_cover
+    target:
+      entity_id:
+      - cover.mathieu
+      - cover.thomas
+    data: {}
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.bedroom_thomas
+      - light.mathieu_light
+    data:
+      brightness_pct: 55
+  mode: single
+- id: '1634108425487'
+  alias: Kids wakeup
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: Wakeup
+  condition: []
+  action:
+  - service: cover.open_cover
+    data: {}
+    target:
+      entity_id:
+      - cover.mathieu
+      - cover.thomas
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.mathieu_light
+      - light.bedroom_thomas
+    data: {}
+  mode: single
+- id: '1638562722666'
+  alias: Green Wall Lights
+  description: ''
+  use_blueprint:
+    path: fibaro/fibaro-dimmer-2.yaml
+    input:
+      fibaro_entity: 55b845f11f3ed92ef0367e5a3161de53
+      s2_button_once:
+      - type: toggle
+        device_id: f3b9049a50a12ca813f22f6ac3471f5b
+        entity_id: light.green_wall_spots
+        domain: light
+      s2_button_twice:
+      - type: turn_on
+        device_id: f3b9049a50a12ca813f22f6ac3471f5b
+        entity_id: light.green_wall_spots
+        domain: light
+        brightness_pct: 100
+      s2_button_trice:
+      - type: turn_on
+        device_id: f3b9049a50a12ca813f22f6ac3471f5b
+        entity_id: light.green_wall_spots
+        domain: light
+        brightness_pct: 1
+      s2_button_hold:
+      - device_id: f3b9049a50a12ca813f22f6ac3471f5b
+        domain: light
+        entity_id: light.green_wall_spots
+        type: brightness_decrease
+- id: '1642235046930'
+  alias: '[alarm][toggle] Christoffel'
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: Alarm
+  condition: []
+  action:
+  - service: input_select.select_next
+    target:
+      entity_id: input_select.alarm_christoffel
+  mode: single
+- id: '1643227401426'
+  alias: '[alarm][off] Christoffel '
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: StopAlarm
+  condition:
+  - condition: state
+    entity_id: person.christoffel
+    state: home
+  action:
+  - service: ifttt.trigger
+    data:
+      event: Turn_Off_CH_Yeelight
+  - service: media_player.turn_off
+    target:
+      entity_id: media_player.master_bathroom
+  - service: automation.turn_off
+    target:
+      entity_id:
+      - automation.test_bedside_lamp
+      - automation.alarm_trigger_sunrise_christoffel
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: automation.turn_on
+    target:
+      entity_id:
+      - automation.test_bedside_lamp
+      - automation.alarm_trigger_sunrise_christoffel
+  mode: single
+- id: '1643231901018'
+  alias: '[alarm][trigger][sunrise] Christoffel'
+  description: ''
+  trigger:
+  - platform: template
+    value_template: "{% set t1 = as_timestamp(strptime(states('sensor.date')+' '+states('sensor.time'),'%Y-%m-%d\
+      \ %H:%M')) | int %}\n    {% set t2 = as_timestamp(strptime(states('sensor.date')+'\
+      \ '+states('sensor.bedtime_christoffel'),'%Y-%m-%d %H:%M')) | int -(60*10) %}\n\
+      \    {{t1 == t2}}"
+  condition:
+  - condition: state
+    entity_id: person.christoffel
+    state: home
+  - condition: state
+    entity_id: input_select.alarm_christoffel
+    state: 'On'
+  action:
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: ifttt.trigger
+    data:
+      event: Turn_On_CH_Yeelight
+  mode: single
