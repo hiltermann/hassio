@@ -3,8 +3,8 @@
 global:
   language: en
   weather: weather.home # Configure a weather entity see HA docs for more info.
-  outside_temperature: sensor.br_temperature # Configure a sensor here!
-  outside_humidity: sensor.br_humidity # Configure a sensor here!
+  # outside_temperature: sensor.br_temperature # Configure a sensor here!
+  # outside_humidity: sensor.br_humidity # Configure a sensor here!
   # alarm: alarm_control_panel.alarm_system #Alarm panel entity.
   # inside_temperature: climate.living_room #Can be 'climate.' or an 'sensor.' entity.
 
