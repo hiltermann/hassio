@@ -1,6 +1,7 @@
 # https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/scenes.html
-main_menu: 'true'
+
 scenes:
+  main_menu: 'true'
   - entity: scene.movie_living_room
 #     icon: mdi:sofa
 #     icon_color: '#ffffff'
