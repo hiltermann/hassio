@@ -10,6 +10,11 @@
 !automation/*
 !automation/*/*
 !automations.yaml
+!dwains-dashboard/
+!dwains-dashboard/*
+!dwains-dashboard/*/*
+!dwains-dashboard/*/*/*
+!dwains-dashboard/*/*/*/*
 
 # Ignore folders.
 .storage
