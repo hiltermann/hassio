@@ -1,0 +1,43 @@
+#Broadlink.yaml
+#Examples for your Configuration.yaml
+#switch:
+  - platform: broadlink
+    mac: '78:0F:77:63:47:BF'
+    switches:
+      - name: "Cooking Hub Power"
+        command_on: 'sgCiAAjBDQ0YGAwNFxkMDRgYDA0YGA0MGBkMGAwZDA0XGQwNGA0XGQwYDAACDA0MGBkLDRgYDQ0XGQwNFxkMDRgYDBkMGQsNGBkLDRgNGBgMGQwAAgwMDRcZDA0XGQwNGBgMDRgZCw0YGA0YDBkMDRcZDA0XDRgZDBgNAAILDA0YGAwNGBgMDRgZDAwYGA0MGRcNGA0YDA0YGAwNGAwYGQ0YDAAF3AAAAAAAAA=='
+        command_off: 'sgCiAAjBDQ0YGAwNFxkMDRgYDA0YGA0MGBkMGAwZDA0XGQwNGA0XGQwYDAACDA0MGBkLDRgYDQ0XGQwNFxkMDRgYDBkMGQsNGBkLDRgNGBgMGQwAAgwMDRcZDA0XGQwNGBgMDRgZCw0YGA0YDBkMDRcZDA0XDRgZDBgNAAILDA0YGAwNGBgMDRgZDAwYGA0MGRcNGA0YDA0YGAwNGAwYGQ0YDAAF3AAAAAAAAA=='
+      - name: "Cooking Hub Increase"
+        command_on: 'sgCAAAwNGBkLDRgYDQwYGA0AAgoMDRgYDA0YGQsNGBgNDBgYDQ0XGQwNFxkMAAIKDA0YGAwNGBkLDRgZDAwYGQwNGBgMDRgYDAACCgwNGBkLDRgZDAwYGQwNGBgMDRgYDA0XGQwAAgoMDRgYDA0YGAwNGBgNDRcZDA0XGQwNGBgMAAXcAAAAAAAAAAA='
+        command_off: 'sgCAAAwNGBkLDRgYDQwYGA0AAgoMDRgYDA0YGQsNGBgNDBgYDQ0XGQwNFxkMAAIKDA0YGAwNGBkLDRgZDAwYGQwNGBgMDRgYDAACCgwNGBkLDRgZDAwYGQwNGBgMDRgYDA0XGQwAAgoMDRgYDA0YGAwNGBgNDRcZDA0XGQwNGBgMAAXcAAAAAAAAAAA='
+      - name: "Cooking Hub Decrease"
+        command_on: 'sgByAAjADQwYGQsNGBkMDRgYDA0YGAwNGBgMGQwNFwACCg0MGBkLDRgZDA0YGAwNGBgMDRcZDBkMDBgAAgoMDRgZCw0YGA0NFxkMDBgZDA0XGQwZDAwYAAIKDA0YGQwMGBkMDRcZDAwYGQwNGBgMGQwNFwAF3AAAAAAAAA=='
+        command_off: 'sgByAAjADQwYGQsNGBkMDRgYDA0YGAwNGBgMGQwNFwACCg0MGBkLDRgZDA0YGAwNGBgMDRcZDBkMDBgAAgoMDRgZCw0YGA0NFxkMDBgZDA0XGQwZDAwYAAIKDA0YGQwMGBkMDRcZDAwYGQwNGBgMGQwNFwAF3AAAAAAAAA=='
+  - platform: command_line
+    switches:
+      purge_recordings:
+        command_on: 'find /config/www/tmp/ -maxdepth 2 -type f -mtime +7 -exec rm {} -f \;'
+        command_off: 'find /config/www/tmp/ -maxdepth 2 -type f -mtime +7 -exec rm {} -f \;'
+  - platform: template
+    switches:
+      kitchen_island_light:
+        friendly_name: "Kitchen Island Lights"
+        value_template: "{{ is_state('binary_sensor.hob_state', 'on') }}"
+        turn_on:
+          service: automation.trigger
+          target:
+            entity_id: automation.turn_on_kitch_island_lights
+          data:
+            skip_condition: false
+        turn_off:
+          service: automation.trigger
+          target:
+            entity_id: automation.turn_off_kitchen_island_lights
+          data:
+            skip_condition: false
+        icon_template: >-
+          {% if is_state('binary_sensor.hob_state', 'on') %}
+            mdi:lightbulb-spot
+          {% else %}
+            mdi:lightbulb-spot-off
+          {% endif %}

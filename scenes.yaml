@@ -1,0 +1,114 @@
+- id: '1645212821394'
+  name: '[Movie][Living Room]'
+  entities:
+    switch.copper_lamp:
+      friendly_name: Copper Lamp
+      state: 'off'
+    switch.standing_lamp:
+      friendly_name: Standing Lamp
+      state: 'off'
+    switch.turkish:
+      friendly_name: Turkish
+      state: 'off'
+    group.kitchen:
+      entity_id:
+      - light.kitchen_table
+      - light.kitchen
+      - switch.kitchen_island_light
+      order: 19
+      friendly_name: Kitchen Lights
+      state: 'off'
+    select.green_wall_spots_local_protection_state:
+      options:
+      - Unprotected
+      - NoOperationPossible
+      friendly_name: 'Green Wall Spots: Local protection state'
+      state: Unprotected
+    select.green_wall_spots_rf_protection_state:
+      options:
+      - Unprotected
+      - NoControl
+      friendly_name: 'Green Wall Spots: RF protection state'
+      state: Unprotected
+    light.green_wall_spots_2:
+      supported_color_modes:
+      - brightness
+      friendly_name: Green Wall Spots (2)
+      supported_features: 32
+      state: 'off'
+    light.green_wall_spots:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 3
+      icon: mdi:spotlight-beam
+      friendly_name: Green Wall Spots
+      supported_features: 32
+      state: 'on'
+    light.dining_table:
+      supported_color_modes:
+      - brightness
+      icon: mdi:ceiling-light-multiple
+      friendly_name: Dining Table
+      supported_features: 32
+      state: 'off'
+    select.dining_table_local_protection_state:
+      options:
+      - Unprotected
+      - NoOperationPossible
+      friendly_name: 'Dining Table: Local protection state'
+      state: Unprotected
+    select.dining_table_rf_protection_state:
+      options:
+      - Unprotected
+      - NoControl
+      friendly_name: 'Dining Table: RF protection state'
+      state: Unprotected
+    light.green_wall_switch:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 255
+      friendly_name: Green Wall Switch
+      supported_features: 32
+      state: 'on'
+    select.seating_area_local_protection_state_2:
+      options:
+      - Unprotected
+      - NoOperationPossible
+      friendly_name: 'Seating Area: Local protection state'
+      state: Unprotected
+    select.seating_area_rf_protection_state_2:
+      options:
+      - Unprotected
+      - NoControl
+      friendly_name: 'Seating Area: RF protection state'
+      state: Unprotected
+    light.seating_area:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 13
+      icon: mdi:ceiling-light
+      friendly_name: Seating Area
+      supported_features: 32
+      state: 'on'
+    switch.wooden:
+      friendly_name: Wooden
+      state: 'off'
+    cover.front:
+      current_position: 0
+      friendly_name: Front
+      supported_features: 7
+      state: closed
+    cover.back:
+      current_position: 0
+      friendly_name: Back
+      supported_features: 7
+      state: closed
+    cover.tv:
+      current_position: 0
+      friendly_name: TV
+      supported_features: 7
+      state: closed
+  icon: mdi:movie-play-outline

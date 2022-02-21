@@ -1,0 +1,8 @@
+sensor.afvalwijzer_gft:
+  icon: mdi:leaf
+sensor.afvalwijzer_restafval:
+  icon: mdi:trash-can-outline
+sensor.afvalwijzer_papiercont:
+  icon: mdi:file-document-multiple-outline
+switch.kitchen_island_light:
+  icon: mdi:lightbulb-spot

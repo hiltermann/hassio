@@ -4,12 +4,17 @@
 
 # You can whitelist files/folders with !, these will not be ignored.
 !.gitignore
+!automations.yaml
+!buttons.yaml
+!customize.yaml
 !groups.yaml
+!scenes.yaml
+!scripts.yaml
+!switches.yaml
 !automation/
 !automation/*
 !automation/*/*
 !automation/*/*/*
-!automations.yaml
 !dwains-dashboard/
 !dwains-dashboard/*
 !dwains-dashboard/*/*
