@@ -1,1 +1,25 @@
-{}
+apple_tv_wakeup:
+  alias: "Wakeup the Apple TV "
+  sequence:
+    - service: remote.send_command
+      data:
+        delay_secs: 1
+        command:  
+          - wakeup
+      target:
+        entity_id: remote.guest_house
+      
+apple_tv_sleep:
+  alias: "Make the Apple TV sleep"
+  sequence:
+    - service: remote.send_command
+      target:
+        entity_id: remote.guest_house
+      data:
+        delay_secs: 1
+        command:
+          - home_hold
+          - select
+    - service: media_player.turn_off
+      target:
+        entity_id: media_player.guest_house
