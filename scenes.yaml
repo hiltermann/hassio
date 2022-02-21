@@ -1,22 +1,17 @@
 - id: '1645212821394'
-  name: '[Movie][Living Room]'
+  name: Cinema Living Room
   entities:
     switch.copper_lamp:
+      icon: mdi:floor-lamp-outline
       friendly_name: Copper Lamp
       state: 'off'
     switch.standing_lamp:
+      icon: mdi:floor-lamp-torchiere-outline
       friendly_name: Standing Lamp
       state: 'off'
     switch.turkish:
+      icon: mdi:floor-lamp-dual-outline
       friendly_name: Turkish
-      state: 'off'
-    group.kitchen:
-      entity_id:
-      - light.kitchen_table
-      - light.kitchen
-      - switch.kitchen_island_light
-      order: 19
-      friendly_name: Kitchen Lights
       state: 'off'
     select.green_wall_spots_local_protection_state:
       options:
@@ -41,7 +36,7 @@
       - brightness
       color_mode: brightness
       brightness: 3
-      icon: mdi:spotlight-beam
+      icon: mdi:leaf-circle-outline
       friendly_name: Green Wall Spots
       supported_features: 32
       state: 'on'
@@ -94,6 +89,7 @@
       supported_features: 32
       state: 'on'
     switch.wooden:
+      icon: mdi:floor-lamp-torchiere-variant-outline
       friendly_name: Wooden
       state: 'off'
     cover.front:
@@ -111,18 +107,52 @@
       friendly_name: TV
       supported_features: 7
       state: closed
+    select.kitchen_table_local_protection_state_8:
+      options:
+      - Unprotected
+      - NoOperationPossible
+      friendly_name: 'Kitchen Table: Local protection state'
+      state: Unprotected
+    select.kitchen_table_rf_protection_state_8:
+      options:
+      - Unprotected
+      - NoControl
+      friendly_name: 'Kitchen Table: RF protection state'
+      state: Unprotected
+    light.kitchen_table:
+      supported_color_modes:
+      - brightness
+      icon: mdi:lightbulb-spot
+      friendly_name: Kitchen Table
+      supported_features: 32
+      state: 'off'
+    select.kitchen_local_protection_state_3:
+      options:
+      - Unprotected
+      - NoOperationPossible
+      friendly_name: 'Kitchen: Local protection state'
+      state: Unprotected
+    select.kitchen_rf_protection_state_3:
+      options:
+      - Unprotected
+      - NoControl
+      friendly_name: 'Kitchen: RF protection state'
+      state: Unprotected
+    light.kitchen:
+      supported_color_modes:
+      - brightness
+      icon: mdi:lightbulb-spot
+      friendly_name: Kitchen
+      supported_features: 32
+      state: 'off'
+    switch.kitchen_island_light:
+      icon: mdi:lightbulb-spot-off
+      friendly_name: Kitchen Island Lights
+      state: 'off'
   icon: mdi:movie-play-outline
 - id: '16452128213943879'
-  name: '[Morning][Wakeup][Home]'
+  name: Wake up home
   entities:
-    group.kitchen:
-      entity_id:
-      - light.kitchen_table
-      - light.kitchen
-      - switch.kitchen_island_light
-      order: 19
-      friendly_name: Kitchen Lights
-      state: 'on'
     select.green_wall_spots_local_protection_state:
       options:
       - Unprotected
@@ -139,8 +169,8 @@
       supported_color_modes:
       - brightness
       color_mode: brightness
-      brightness: 30
-      icon: mdi:spotlight-beam
+      brightness: 31
+      icon: mdi:leaf-circle-outline
       friendly_name: Green Wall Spots
       supported_features: 32
       state: 'on'
@@ -148,7 +178,7 @@
       supported_color_modes:
       - brightness
       color_mode: brightness
-      brightness: 40
+      brightness: 41
       icon: mdi:ceiling-light-multiple
       friendly_name: Dining Table
       supported_features: 32
@@ -181,7 +211,7 @@
       supported_color_modes:
       - brightness
       color_mode: brightness
-      brightness: 55
+      brightness: 54
       icon: mdi:ceiling-light
       friendly_name: Seating Area
       supported_features: 32
@@ -195,10 +225,48 @@
       current_position: 0
       friendly_name: Back
       supported_features: 7
-      state: open
+      state: closed
     cover.tv:
       current_position: 0
       friendly_name: TV
       supported_features: 7
       state: closed
   icon: mdi:bed-king-outline
+- id: '1645477666941'
+  name: Cinema Guest House
+  entities:
+    switch.projector:
+      icon: mdi:audio-video
+      friendly_name: Projector Switch
+      state: 'on'
+    switch.floor:
+      friendly_name: Floor
+      state: 'on'
+    media_player.guest_house:
+      source_list:
+      - App Store
+      - Arcade
+      - Computers
+      - Movies
+      - Music
+      - Netflix
+      - NLZIET
+      - NOS
+      - NPO
+      - Photos
+      - Podcasts
+      - Search
+      - Settings
+      - TV
+      - YouTube
+      - YouTube Kids
+      - Ziggo GO TV
+      volume_level: 0
+      friendly_name: Guest House
+      supported_features: 450487
+      state: idle
+    remote.guest_house:
+      friendly_name: Guest House
+      supported_features: 0
+      state: 'on'
+  icon: mdi:theater
