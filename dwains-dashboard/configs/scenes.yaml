@@ -4,6 +4,6 @@ scenes:
   main_menu: 'true'
   entities:
     - entity: scene.movie_living_room
-#     icon: mdi:sofa
-#     icon_color: '#ffffff'
-#     background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
+      icon: mdi:movie-play-outline
+      icon_color: '#ffffff'
+      background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
