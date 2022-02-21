@@ -5,6 +5,14 @@
 # You can whitelist files/folders with !, these will not be ignored.
 !test.yaml
 !.gitignore
+!groups.yaml
+!automation/
+!automations.yaml
+
+# Ignore folders.
+.storage
+.cloud
+.google.token
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
