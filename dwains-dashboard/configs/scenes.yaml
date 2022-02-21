@@ -7,3 +7,7 @@ scenes:
       icon: mdi:movie-play-outline
       icon_color: '#ffffff'
       background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
+    - entity: scene.morning_wakeup_home
+      icon: mdi:bed-king-outline
+      icon_color: '#ffffff'
+      background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
