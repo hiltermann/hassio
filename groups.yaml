@@ -1,0 +1,102 @@
+  entrance:
+    name: Entrance
+    entities:
+      - switch.wardrobe
+      - light.entrance
+  kitchen:
+    name: Kitchen Lights
+    entities:
+      - light.kitchen_table
+      - light.kitchen
+      - switch.kitchen_island_light
+  seating_corner:
+    name: Seating Lights
+    entities:
+      - light.seating_area
+      - switch.standing_lamp
+      - switch.copper_lamp
+      - switch.turkish_lamp
+  living_room:
+    name: Living Room Lights
+    entities:
+      - light.seating_area
+      - switch.standing_lamp
+      - switch.copper_lamp
+      - switch.turkish
+      - light.dining_table
+      - light.green_wall_spots
+      - switch.wooden
+  back_garden:
+    name: Back Garden
+    entities:
+      - switch.closet
+      - switch.bikeshed
+      - switch.back_garden_switch
+  front_garden:
+    name: Front Garden
+    entities:
+      - switch.front_garden
+  driveway:
+    name: Driveway
+    entities:
+  outdoor:
+    name: Outdoor
+    entities:
+      - switch.front_garden
+      - switch.back_garden_switch
+      - switch.closet
+      - switch.bikeshed
+  office_light:
+    name: Office
+    entities:
+      - switch.office_spots
+      - switch.office_light
+  master_bedroom_lights:
+    name: Master Bedroom Lights
+    entities:
+      - light.closet
+      - light.master_bedroom
+      - light.bedroom_chandelier
+  laundry_appliance_state:
+    name: Laundry and Dryer
+    entities:
+      - binary_sensor.dryer_state
+      - binary_sensor.washing_machine_state
+  cinema_devices_state:
+    name: Projector and Receiver
+    entities:
+      - switch.receiver_main
+      - switch.projector_main
+  cinema_lights:
+    name: Cinema Lights
+    entities:
+      - light.chandeliers
+      - switch.desk_spots_switch_3
+      - switch.green_spot
+  kitchen_devices_state:
+    name: Tablet Charger and Cooking hob
+    entities:
+      - switch.tablet_charger
+      - switch.cooking_hob_switch
+  living_room_curtains:
+    name: Living Room Curtains
+    entities:
+      - cover.front
+      - cover.back
+      - cover.tv
+  first_floor_curtains:
+    name: First Floor Curtains
+    entities:
+      - cover.thomas
+      - cover.mathieu
+  all_curtains:
+    name: All Curtains
+    entities:
+     - group.living_room_curtains
+     - goup.first_floor_curtains
+  living_room_plants:
+    name: Living Room Plants
+    entities:
+      - plant.epipremnum_aureum_green_wall
+      - plant.areca
+      - plant.epipremnum_aureum_small_pot
