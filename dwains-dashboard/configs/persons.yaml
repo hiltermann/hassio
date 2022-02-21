@@ -1,0 +1,24 @@
+# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/persons.html
+
+persons: 
+  - name: Christoffel
+    track: person.christoffel
+    page_entities:
+      entities:
+        - entity: sensor.pixel_4_steps_sensor
+  - name: Gwladys
+    track: person.gwladys
+  - name: Thomas
+    track: person.thomas
+  - name: Mathieu
+    track: person.mathieu
+#     more_entities:
+#       columns: 1 #optional
+#       entities:
+#         - entity: sensor.steps
+#         - entity: sensor.steps
+#     page_entities:
+#       columns: 2 #optional
+#       entities:
+#         - entity: sensor.steps
+#         - entity: sensor.steps

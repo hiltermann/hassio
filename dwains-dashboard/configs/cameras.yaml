@@ -1,0 +1,12 @@
+# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/cameras.html
+
+cameras:
+  main_menu: 'false'
+  #entities:
+    #- camera.doorbell
+    #- camera.front_yard
+    #- camera.driveway
+    #- camera.back_yard
+    #- camera.office
+    #- camera.mathieu_bedroom
+    #- camera.master_bedroom

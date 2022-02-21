@@ -1,0 +1,20 @@
+# dwains_theme
+# Custom button for room addon: hello room
+
+type: picture-glance
+entities:
+  - entity: {{ (data | fromjson)['entity'] }}
+camera_image: {{ (data | fromjson)['entity'] }}
+name: {{ name }}
+icon: {{ icon|default('mdi:puzzle') }}
+# tap_action: 
+#   action: navigate
+#   navigation_path: {{ navigation_path }}   
+label: >
+  [[[ 
+    if(entity){
+      return entity.state;
+    } else {
+      return 'Entity error!';
+    }
+  ]]]

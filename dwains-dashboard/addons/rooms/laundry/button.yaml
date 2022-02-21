@@ -1,0 +1,30 @@
+# dwains_theme
+# Custom button for room addon: hello room
+
+type: custom:mini-graph-card
+entities:
+  - {{ (data | fromjson)['entity'] }}
+name: {{ name }}
+points_per_hour: 12
+hours_to_show: 3
+color_thresholds:
+  - value: 4.0
+    color: "#FF0000"
+  - value: 4.5
+    color: "#A0A0A0"
+  - value: 9.0
+    color: "#A0A0A0"
+  - value: 10.0
+    color: "#FF0000"
+icon: {{ icon|default('mdi:puzzle') }}
+tap_action: 
+  action: navigate
+  navigation_path: {{ navigation_path }}   
+label: >
+  [[[ 
+    if(entity){
+      return entity.state;
+    } else {
+      return 'Entity error!';
+    }
+  ]]]

@@ -1,0 +1,304 @@
+# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/rooms.html
+rooms:
+  - name: Entrance
+    icon: mdi:door
+    door: binary_sensor.front_door
+    motion: binary_sensor.entrance_hall
+    temperature: sensor.entrance_hall_temperature
+    light: group.entrance
+    page_entities:
+      columns: 3 #option
+      show_title: 'false' #optional
+    addons:
+      - name: Doorbell
+        icon: mdi:doorbell-video
+        path: 'dwains-dashboard/addons/rooms/doorbell/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/doorbell/button.yaml'
+        data:
+          entity: camera.doorbell
+      - name: Entrance
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.entrance
+  - name: Living Room
+    icon: mdi:fireplace
+    light: group.living_room
+    #motion: binary_sensor.living_room_motion
+    motion: binary_sensor.living_room_motion
+    climate: climate.living_room
+    media_player: media_player.living_room
+    cover: group.living_room_curtains
+    plant: group.living_room_plants
+    #safety: binary_sensor.smoke_sensor_sensor
+    page_entities:
+      columns: 3 #option
+      show_title: 'false' #optional
+      entities:
+        - entity: switch.tv_main
+        - entity: switch.zone_valve
+    addons:
+      - name: Dining
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.dining_table
+      - name: Green Wall
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.green_wall_spots
+      - name: Seating
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.seating_area
+      - name: Kitchen
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.kitchen
+      - name: Sink
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.kitchen_table
+  - name: Kitchen
+    icon: mdi:stove
+    door: binary_sensor.garden_door
+    motion: binary_sensor.kitchen
+    light: group.kitchen
+    climate: climate.living_room
+    media_player: media_player.kitchen
+    device: group.kitchen_devices_state
+    page_entities:
+      columns: 3 #option
+      show_title: 'false' #optional
+      entities:
+        - entity: sensor.living_room_open_window_2
+    addons:
+      - name: Kitchen
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.kitchen
+      - name: Sink
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.kitchen_table
+      - name: Dining
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.dining_table
+      - name: Green Wall
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.green_wall_spots
+      - name: Seating
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.seating_area
+  - name: 1st Landing
+    icon: mdi:home-floor-1
+    motion: binary_sensor.first_floor
+    temperature: sensor.first_floor_temperature
+    light: light.landing
+    page_entities:
+      columns: 2 #option
+      show_title: 'false' #optional
+      entities:
+    addons:
+      - name: Landing
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.landing
+  - name: Kids Bedroom
+    icon: mdi:bunk-bed-outline
+    light: light.bedroom_thomas
+    #window: sensor.thomas_bedroom_open_window_2
+    climate: climate.thomas_bedroom
+    cover: cover.thomas
+    page_entities:
+      columns: 2 #option
+      show_title: 'false' #optional
+      entities:
+        - entity: light.landing
+    addons:
+      - name: Bedroom Thomas
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.bedroom_thomas
+  - name: Kids Playroom
+    icon: mdi:toy-brick
+    light: light.mathieu_light
+    #window: sensor.bedroom_mathieu_open_window_2
+    climate: climate.bedroom_mathieu
+    cover: cover.mathieu
+    page_entities:
+      columns: 2 #option
+      show_title: 'false' #optional
+      entities:
+        - entity: light.landing
+    addons:
+      - name: Bedroom Mathieu
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.mathieu_light
+  - name: Office
+    icon: mdi:desk
+    light: group.office_light
+    motion: binary_sensor.office_motion
+    door: binary_sensor.balcony_door
+    climate: climate.office
+    media_player: media_player.office
+    page_entities:
+      columns: 2 #option
+      show_title: 'false' #optional
+      entities:
+        - entity: light.landing
+  - name: 2nd Landing
+    icon: mdi:home-floor-2
+    motion: binary_sensor.second_floor_motion
+    temperature: sensor.second_floor_motion_temperature
+    device: group.laundry_appliance_state
+    light: light.laundry_light
+    page_entities:
+      columns: 2 #option
+      show_title: 'false' #optional
+      entities:
+    addons:
+      - name: Washing Machine
+        icon: mdi:washing-machine
+        path: 'dwains-dashboard/addons/rooms/laundry/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/laundry/button.yaml'
+        data:
+          entity: sensor.washing_machine_power
+      - name: Tumble Dryer
+        icon: mdi:tumble-dryer
+        path: 'dwains-dashboard/addons/rooms/laundry/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/laundry/button.yaml'
+        data:
+          entity: sensor.dryer_power
+      - name: Laundry Room
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.laundry_light
+  - name: Master Bedroom
+    icon: mdi:bed-king-outline
+    light: group.master_bedroom_lights
+    climate: climate.master_bedroom
+    #media_player: media_player.ensuite_bathroom
+    page_entities:
+      columns: 2 #option
+      show_title: 'false' #optional
+      entities:
+        - entity: input_select.alarm_christoffel
+        - entity: sensor.bedtime_christoffel
+        - entity: input_select.alarm_gwladys
+        - entity: sensor.master_bedroom_open_window_2
+    addons:
+      - name: Bedroom
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.master_bedroom
+      - name: Closet
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.closet
+      - name: Chandelier
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.bedroom_chandelier
+      - name: Bathroom
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.bathroom
+  - name: Ensuite Bathroom
+    icon: mdi:shower
+    light: light.bathroom
+    #temperature: sensor.master_bedroom_temperature_2
+    climate: climate.master_bedroom
+    #humidity: sensor.master_bedroom_humidity_2
+    media_player: media_player.ensuite_bathroom
+    page_entities:
+      columns: 2 #option
+      show_title: 'false' #optional
+      entities:
+        - entity: sensor.master_bedroom_open_window_2
+    addons:
+      - name: Bathroom
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.bathroom
+      - name: Bedroom
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.master_bedroom
+      - name: Closet
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.closet
+      - name: Chandelier
+        icon: mdi:spotlight-beam
+        path: 'dwains-dashboard/addons/rooms/slider/page.yaml'
+        button_path: 'dwains-dashboard/addons/rooms/slider/button.yaml'
+        data:
+          entity: light.bedroom_chandelier
+  - name: Cinema
+    icon: mdi:theater
+    climate: climate.guest_house
+    device: group.cinema_devices_state
+    light: group.cinema_lights
+    page_entities:
+      columns: 2 #option
+      show_title: 'false' #optional
+      entities:
+  - name: Garden
+    icon: mdi:tree-outline
+    temperature: sensor.driveway
+    motion: binary_sensor.driveway
+    light: group.outdoor
+    cover: cover.sun_shades
+    page_entities:
+      columns: 2 #option
+      show_title: 'false' #optional
+      entities:
+      
+          

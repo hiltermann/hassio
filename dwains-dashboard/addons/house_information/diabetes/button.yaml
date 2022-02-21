@@ -1,0 +1,16 @@
+type: custom:button-card
+entity: sensor.dexcom_value
+template: rooms_child
+name: Nighscout
+icon: mdi:diabetes
+tap_action: 
+  action: navigate
+  navigation_path: 'dwains-dashboard/addons/house_information/diabetes/page.yaml'   
+label: >
+  [[[ 
+    if(entity){
+      return entity.state;
+    } else {
+      return 'Entity error!';
+    }
+  ]]]

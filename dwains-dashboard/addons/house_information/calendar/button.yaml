@@ -1,0 +1,16 @@
+type: custom:button-card
+entity: calendar.just_the_two_of_us
+template: rooms_child
+name: Family Calendar
+icon: mdi:calendar
+tap_action: 
+  action: navigate
+  navigation_path: 'dwains-dashboard/addons/house_information/calendar/page.yaml'   
+label: >
+  [[[ 
+    if(entity){
+      return entity.state;
+    } else {
+      return 'Entity error!';
+    }
+  ]]]

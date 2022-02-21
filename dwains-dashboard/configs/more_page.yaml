@@ -1,0 +1,7 @@
+# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/more_page.html
+more_page:
+  addons:
+    - name: Security Dashboard
+      icon: mdi:shield-check-outline
+      main_menu: 'true' #Show this addon in the main navigation bar!
+      path: 'dwains-dashboard/addons/more_page/security_dashboard/page.yaml'
