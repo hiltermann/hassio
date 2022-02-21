@@ -73,6 +73,7 @@
       - light.chandeliers
       - switch.desk_spots_switch_3
       - switch.green_spot
+      - switch.floor
   kitchen_devices_state:
     name: Tablet Charger and Cooking hob
     entities:
