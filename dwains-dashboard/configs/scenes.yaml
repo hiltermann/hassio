@@ -11,3 +11,7 @@ scenes:
       icon: mdi:bed-king-outline
       icon_color: '#ffffff'
       background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
+    - entity: scene.cinema_guest_house
+      icon: mdi:theater
+      icon_color: '#ffffff'
+      background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
