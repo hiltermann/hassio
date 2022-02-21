@@ -1426,12 +1426,13 @@
   description: ''
   mode: single
   trigger:
-    - platform: time_pattern
-      minutes: /2
-  condition:
-    - condition: numeric_state
+    - platform: numeric_state
       entity_id: sensor.projector_power_3
       below: '40'
+      for:
+        hours: 0
+        minutes: 15
+        seconds: 0
   action:
     - type: turn_off
       device_id: 96b9c06a68108f32fc662dbe1f89fff0
