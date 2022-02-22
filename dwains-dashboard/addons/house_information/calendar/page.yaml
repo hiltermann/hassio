@@ -23,8 +23,9 @@
             showWeekDay: true
             showNoEventDays: true
             showDate: true
-            showProgressBar: false
-            showCurrentEventLine: true
+            showProgressBar: true
+            showFullDayProgress: true
+            showCurrentEventLine: false
             showEventIcon: true
             europeanDate: true
             disableEventLink: true
