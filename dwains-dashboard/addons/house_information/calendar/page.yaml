@@ -1,5 +1,5 @@
 -   type: custom:dwains-flexbox-card
-    items_classes: 'col-sm-4 col-md-4 col-lg-4'
+    items_classes: 'col-sm-6 col-md-6'
     cards:
       - type: vertical-stack
         cards:
@@ -11,6 +11,37 @@
               - calendar.feestdagen
       - type: vertical-stack
         cards:
-          - type: energy-usage-graph
           - type: energy-distribution
             link_dashboard: true
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.dexcom_thiltermann_glucose_value
+                show_fill: false
+         #     - color: gray
+         #       entity: sensor.cgm_temp_basal
+         #       name: Night
+         #       show_line: false
+         #       show_points: false
+         #       show_legend: false
+         #       show_fill: true
+         #       y_axis: secondary
+         #       smoothing: false
+         #       points_per_hour: 30
+            name: Glucose Graph
+            points_per_hour: 12
+            hours_to_show: 3
+            lower_bound: 0.0
+            color_thresholds_transition: hard
+            color_thresholds:
+              - value: 4.0
+                color: "#FF0000"
+              - value: 4.5
+                color: "#A0A0A0"
+              - value: 9.0
+                color: "#A0A0A0"
+              - value: 10.0
+                color: "#FF0000"
+            icon: 'mdi:diabetes'
+            show:
+              labels: true
+        #      labels_secondary: true
