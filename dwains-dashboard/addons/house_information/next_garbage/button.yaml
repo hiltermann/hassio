@@ -1,19 +1,13 @@
-type: conditional
-conditions:
-  - entity: binary_sensor.display_garbage
-    state_not: 'off'
-card:
-  type: custom:button-card
-  entity: sensor.next_garbage
-  template: rooms_child
-  name: Next Garbage
-  icon: mdi:trash-can-outline
-  label: >
-    [[[ 
-      if(entity){
-        return entity.state;
-      } else {
-        return 'Entity error!';
-      }
-    ]]]
-  
+type: custom:button-card
+entity: sensor.next_garbage
+template: rooms_child
+name: Next Garbage
+icon: mdi:trash-can-outline
+label: >
+  [[[ 
+    if(entity){
+      return entity.state;
+    } else {
+      return 'Entity error!';
+    }
+  ]]]
