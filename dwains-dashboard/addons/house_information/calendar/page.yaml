@@ -9,7 +9,7 @@
               - calendar.1just_the_two_of_us
               - calendar.2verjaardagen
               - calendar.3feestdagen
-              - calendar.4eredivisie_ajax
+              #- calendar.4eredivisie_ajax
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
