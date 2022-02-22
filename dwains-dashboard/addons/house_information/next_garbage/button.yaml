@@ -4,7 +4,7 @@ conditions:
     state_not: 'off'
 card:
   type: custom:button-card
-  entity: sensor.sensor.next_garbage
+  entity: sensor.next_garbage
   template: rooms_child
   name: Next Garbage
   icon: mdi:trash-can-outline
