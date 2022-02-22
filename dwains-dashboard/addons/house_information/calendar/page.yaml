@@ -21,6 +21,7 @@
                  color: 'blue'
                - entity: calendar.3feestdagen
                  icon: 'mdi:account'
+                 color: 'yellow'
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
