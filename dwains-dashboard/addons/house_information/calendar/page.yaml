@@ -21,6 +21,7 @@
             showWeekDay: true
             showNoEventDays: true
             showDate: true
+            showProgressBar: true
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
