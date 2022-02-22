@@ -4,16 +4,16 @@
   defaultMode: Calendar
   entities:
     - entity: calendar.just_the_two_of_us
-      icon: 'mdi:home-heart'
+      icon: 'mdi:calendar-heart'
       color: 'red'
   entities:
     - entity: calendar.verjaardagen
-      icon: 'mdi:home-heart'
+      icon: 'mdi:cake-variant-outline'
       color: 'green'
   entities:
-    - entity: calendar.gezin
-      icon: 'mdi:home-heart'
-      color: 'blue'
+    - entity: calendar.feestdagen
+      icon: 'mdi:palm-tree'
+      color: 'green'
   fullDayEventText: "All day"
   untilText: "Until"
   showColors: true
