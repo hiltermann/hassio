@@ -6,13 +6,12 @@
           - type: calendar
             initial_view: 'listWeek'
             entities:
-              #- calendar.just_the_two_of_us
-              - calendar.verjaardagen
-              - calendar.feestdagen
+              - calendar.1just_the_two_of_us
+              - calendar.2verjaardagen
+              - calendar.3feestdagen
+              - calendar.4eredivisie_ajax
       - type: vertical-stack
         cards:
-          - type: energy-distribution
-            link_dashboard: true
           - type: custom:mini-graph-card
             entities:
               - entity: sensor.dexcom_thiltermann_glucose_value
@@ -45,3 +44,5 @@
             show:
               labels: true
         #      labels_secondary: true
+          - type: energy-distribution
+            link_dashboard: true
