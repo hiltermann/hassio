@@ -4,7 +4,7 @@
       - type: vertical-stack
         cards:
           - type: 'custom:atomic-calendar-revive'
-            name: 'My Calendar'
+            name: 'Family Calendar'
             entities:
               - entity: calendar.a_just_the_two_of_us
                 icon: 'mdi:calendar-heart'
@@ -23,12 +23,12 @@
             showWeekDay: true
             showNoEventDays: true
             showDate: true
-            showProgressBar: true
+            showProgressBar: false
+            showCurrentEventLine: true
             showEventIcon: true
             europeanDate: true
             disableEventLink: true
             enableModeChange: true
-            showCurrentEventLine: false
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
