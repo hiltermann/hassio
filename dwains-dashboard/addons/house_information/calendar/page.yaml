@@ -28,6 +28,7 @@
             europeanDate: true
             disableEventLink: true
             enableModeChange: true
+            showCurrentEventLine: false
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
