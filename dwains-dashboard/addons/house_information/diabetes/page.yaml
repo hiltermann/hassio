@@ -2,18 +2,18 @@
 
   - type: custom:mini-graph-card
     entities:
-      - entity: sensor.dexcom_value
+      - entity: sensor.dexcom_thiltermann_glucose_value
         show_fill: false
-      - color: gray
-        entity: sensor.cgm_temp_basal
-        name: Night
-        show_line: false
-        show_points: false
-        show_legend: false
-        show_fill: true
-        y_axis: secondary
-        smoothing: false
-        points_per_hour: 30
+ #     - color: gray
+ #       entity: sensor.cgm_temp_basal
+ #       name: Night
+ #       show_line: false
+ #       show_points: false
+ #       show_legend: false
+ #       show_fill: true
+ #       y_axis: secondary
+ #       smoothing: false
+ #       points_per_hour: 30
     name: Glucose Graph
     points_per_hour: 12
     hours_to_show: 3
