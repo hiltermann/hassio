@@ -22,6 +22,9 @@
             showNoEventDays: true
             showDate: true
             showProgressBar: true
+            showEventIcon: true
+            europeanDate: true
+            disableEventLink: true
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
