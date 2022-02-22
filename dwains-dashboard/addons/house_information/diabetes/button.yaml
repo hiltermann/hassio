@@ -1,5 +1,5 @@
 type: custom:button-card
-entity: sensor.dexcom_value
+entity: sensor.dexcom_thiltermann_glucose_value
 template: rooms_child
 name: Nighscout
 icon: mdi:diabetes
