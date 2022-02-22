@@ -3,29 +3,24 @@
     cards:
       - type: vertical-stack
         cards:
-          - type: calendar
-            initial_view: 'listWeek'
-            entities:
-              - calendar.a_just_the_two_of_us
-              - calendar.b_verjaardagen
-              - calendar.c_feestdagen
           - type: 'custom:atomic-calendar-revive'
             name: 'My Calendar'
             entities:
               - entity: calendar.a_just_the_two_of_us
-                icon: 'mdi:home-heart'
+                icon: 'mdi:calendar-heart'
                 color: 'red'
               - entity: calendar.b_verjaardagen
-                icon: 'mdi:account-plus'
+                icon: 'mdi:cake-variant-outline'
                 color: 'blue'
               - entity: calendar.c_feestdagen
-                icon: 'mdi:account'
+                icon: 'mdi:palm-tree'
                 color: 'yellow'
             maxDaysToShow: 3
             maxEventCount: 6
             showLocation: true
             showWeekDay: true
             showNoEventDays: true
+            showDate: true
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
