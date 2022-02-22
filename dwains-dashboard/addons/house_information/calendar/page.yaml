@@ -6,7 +6,7 @@
           - type: calendar
             initial_view: 'listWeek'
             entities:
-              - calendar.just_the_two_of_us
+              #- calendar.just_the_two_of_us
               - calendar.verjaardagen
               - calendar.feestdagen
       - type: vertical-stack
