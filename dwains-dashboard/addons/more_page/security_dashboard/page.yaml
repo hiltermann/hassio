@@ -14,7 +14,6 @@
                 - letter-spacing: 10px
             type: custom:button-card
           - type: grid
-            #square: true
             cards:
               - type: conditional
                 conditions:
