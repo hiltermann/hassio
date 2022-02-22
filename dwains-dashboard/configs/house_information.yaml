@@ -9,6 +9,9 @@ house_information:
       icon: mdi:trash-can-outline
       path: 'dwains-dashboard/addons/house_information/next_garbage/button.yaml'
   addons: 
+    - name: Next Garbage Addon
+      icon: mdi:trash-can-outline
+      path: 'dwains-dashboard/addons/house_information/next_garbage/button.yaml'
     - name: Glucose
       icon: mdi:diabetes
       path: 'dwains-dashboard/addons/house_information/diabetes/page.yaml'
