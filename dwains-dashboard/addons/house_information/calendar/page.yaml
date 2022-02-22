@@ -9,7 +9,6 @@
               - calendar.a_just_the_two_of_us
               - calendar.b_verjaardagen
               - calendar.c_feestdagen
-              #- calendar.4eredivisie_ajax
           - type: 'custom:atomic-calendar-revive'
             name: 'My Calendar'
             entities:
@@ -22,6 +21,11 @@
               - entity: calendar.c_feestdagen
                 icon: 'mdi:account'
                 color: 'yellow'
+            maxDaysToShow: 3
+            maxEventCount: 6
+            showLocation: true
+            showWeekDay: true
+            showNoEventDays: true
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
