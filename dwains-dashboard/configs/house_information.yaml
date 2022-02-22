@@ -5,14 +5,13 @@ house_information:
     - entity: sensor.dexcom_thiltermann_glucose_value
     - entity: sensor.next_garbage
     - entity: input_select.house_mode
-    addons:
-      - name: Next Garbage Addon
-        icon: mdi:trash-can-outline
-        path: 'dwains-dashboard/addons/house_information/next_garbage/page.yaml'
-        button_path: 'dwains-dashboard/addons/house_information/next_garbage/button.yaml'
-        data:
-          entity: sensor.next_garbage
   addons: 
+    - name: Next Garbage Addon
+      icon: mdi:trash-can-outline
+      path: 'dwains-dashboard/addons/house_information/next_garbage/page.yaml'
+      button_path: 'dwains-dashboard/addons/house_information/next_garbage/button.yaml'
+      data:
+        entity: sensor.next_garbage
     - name: Glucose
       icon: mdi:diabetes
       path: 'dwains-dashboard/addons/house_information/diabetes/page.yaml'
