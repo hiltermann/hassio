@@ -1,0 +1,17 @@
+type: conditional
+conditions:
+  - entity: binary_sensor.display_garbage
+    state: 'True'
+card:
+  type: custom:button-card
+  entity: sensor.sensor.next_garbage
+  icon: mdi:trash-can-outline
+label: >
+  [[[ 
+    if(entity){
+      return entity.state;
+    } else {
+      return 'Entity error!';
+    }
+  ]]]
+  
