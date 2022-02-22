@@ -15,8 +15,10 @@
               - entity: calendar.c_feestdagen
                 icon: 'mdi:palm-tree'
                 color: 'yellow'
+            fullDayEventText: "All day"
+            untilText: "Until"
             maxDaysToShow: 3
-            maxEventCount: 10
+            maxEventCount: 9
             showLocation: true
             showWeekDay: true
             showNoEventDays: true
@@ -25,6 +27,7 @@
             showEventIcon: true
             europeanDate: true
             disableEventLink: true
+            enableModeChange: true
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
