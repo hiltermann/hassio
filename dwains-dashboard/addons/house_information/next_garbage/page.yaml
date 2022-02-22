@@ -1,1 +1,7 @@
-
+- type: conditional
+  conditions:
+    - entity: binary_sensor.display_garbage
+      state_not: 'off'
+  card:
+    type: entity
+    entity: sensor.next_garbage
