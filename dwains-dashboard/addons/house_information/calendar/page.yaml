@@ -16,7 +16,7 @@
                 icon: 'mdi:palm-tree'
                 color: 'yellow'
             maxDaysToShow: 3
-            maxEventCount: 6
+            maxEventCount: 10
             showLocation: true
             showWeekDay: true
             showNoEventDays: true
