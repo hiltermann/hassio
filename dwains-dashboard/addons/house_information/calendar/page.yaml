@@ -1,3 +1,39 @@
-  - type: calendar
-    entities:
-      - calendar.just_the_two_of_us
+- type: 'custom:atomic-calendar-revive'
+  name: 'Calendar'
+  enableModeChange: true
+  defaultMode: Calendar
+  entities:
+    - entity: calendar.just_the_two_of_us
+      icon: 'mdi:home-heart'
+      color: 'red'
+  entities:
+    - entity: calendar.verjaardagen
+      icon: 'mdi:home-heart'
+      color: 'green'
+  entities:
+    - entity: calendar.gezin
+      icon: 'mdi:home-heart'
+      color: 'blue'
+  fullDayEventText: "All day"
+  untilText: "Until"
+  showColors: true
+  maxDaysToShow: 7
+  showLocation: true
+  showMonth: false
+  showCurrentEventLine: false
+  dateColor: black
+  dateSize: 90
+  timeColor: blue
+  timeSize: 90
+  eventTitleColor: black
+  eventTitleSize: 100
+  locationIconColor: "rgb(230, 124, 115)"
+  locationLinkColor: black
+  locationTextSize: 90
+  dimFinishedEvents: true
+  finishedEventOpacity: 0.6
+  finishedEventFilter: "grayscale(100%)"
+  dayWrapperLineColor: black
+  eventBarColor: blue
+  showProgressBar: true
+  progressBarColor: blue
