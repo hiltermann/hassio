@@ -31,4 +31,4 @@
     icon: 'mdi:diabetes'
     show:
       labels: true
-      labels_secondary: true
+#      labels_secondary: true
