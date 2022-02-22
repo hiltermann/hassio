@@ -6,22 +6,22 @@
           - type: calendar
             initial_view: 'listWeek'
             entities:
-              - calendar.1just_the_two_of_us
-              - calendar.2verjaardagen
-              - calendar.3feestdagen
+              - calendar.a_just_the_two_of_us
+              - calendar.b_verjaardagen
+              - calendar.c_feestdagen
               #- calendar.4eredivisie_ajax
-           - type: 'custom:atomic-calendar-revive'
-             name: 'My Calendar'
-             entities:
-               - entity: calendar.1just_the_two_of_us
-                 icon: 'mdi:home-heart'
-                 color: 'red'
-               - entity: calendar.2verjaardagen
-                 icon: 'mdi:account-plus'
-                 color: 'blue'
-               - entity: calendar.3feestdagen
-                 icon: 'mdi:account'
-                 color: 'yellow'
+          - type: 'custom:atomic-calendar-revive'
+            name: 'My Calendar'
+            entities:
+              - entity: calendar.a_just_the_two_of_us
+                icon: 'mdi:home-heart'
+                color: 'red'
+              - entity: calendar.b_verjaardagen
+                icon: 'mdi:account-plus'
+                color: 'blue'
+              - entity: calendar.c_feestdagen
+                icon: 'mdi:account'
+                color: 'yellow'
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
