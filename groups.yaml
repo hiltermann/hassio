@@ -65,8 +65,7 @@
   cinema_devices_state:
     name: Projector and Receiver
     entities:
-      - switch.receiver_main
-      - switch.projector_main
+      - switch.projector
   cinema_lights:
     name: Cinema Lights
     entities:
