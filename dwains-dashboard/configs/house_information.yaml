@@ -3,8 +3,9 @@
 house_information:
   favorites:
     - entity: sensor.dexcom_thiltermann_glucose_value
-#    - entity: sensor.next_garbage
     - entity: input_select.house_mode
+    - entity: input_select.alarm_christoffel
+    - entity: input_select.alarm_gwladys
   addons: 
     - name: Calendar
       icon: mdi:calendar
