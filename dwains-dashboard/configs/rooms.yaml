@@ -300,5 +300,3 @@ rooms:
       columns: 2 #option
       show_title: 'false' #optional
       entities:
-      
-          
