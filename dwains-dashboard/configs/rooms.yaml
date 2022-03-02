@@ -218,7 +218,7 @@ rooms:
         - entity: input_select.alarm_christoffel
         - entity: sensor.bedtime_christoffel
         - entity: input_select.alarm_gwladys
-        - entity: sensor.master_bedroom_open_window_2
+        - entity: sensor.bedtime_glwadys
     addons:
       - name: Bedroom
         icon: mdi:spotlight-beam
