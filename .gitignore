@@ -15,11 +15,11 @@
 !automation/*
 !automation/*/*
 !automation/*/*/*
-!dwains-dashboard/
-!dwains-dashboard/*
-!dwains-dashboard/*/*
-!dwains-dashboard/*/*/*
-!dwains-dashboard/*/*/*/*
+#!dwains-dashboard/
+#!dwains-dashboard/*
+#!dwains-dashboard/*/*
+#!dwains-dashboard/*/*/*
+#!dwains-dashboard/*/*/*/*
 
 # Ignore folders.
 .storage
